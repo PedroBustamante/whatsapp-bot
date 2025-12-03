@@ -17,7 +17,8 @@ wppconnect.create({
   puppeteerOptions: {
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
   },
-  disableWelcome: true
+  disableWelcome: true,
+  autoClose: 0
 })
 .then((client) => start(client))
 .catch((e) => console.error('Erro ao criar sessão WPP:', e));
