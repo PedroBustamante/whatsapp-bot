@@ -12,16 +12,11 @@ let latestQR = null;
 wppconnect.create({
   session: 'bot-session',
   // salva o QR em base64 para exibirmos via HTTP
-  catchQR: (base64Qr, asciiQR, attempts, urlCode) => {
-    latestQR = base64Qr;
-    console.log('QR atualizado. Acesse /qr para escanear.');
-  },
+  session: 'bot-session',
+  catchQR: (base64Qr) => { latestQR = base64Qr; console.log('QR atualizado. Acesse /qr'); },
   puppeteerOptions: {
-    // flags necessárias em PaaS
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
   },
-  // recomendações úteis em produção
-  // logQR: false, // já estamos tratando o QR via catchQR
   disableWelcome: true
 })
 .then((client) => start(client))
