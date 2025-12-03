@@ -81,7 +81,6 @@ function start(client) {
         await client.sendText(message.from, 'Oi! Teste funcionando!');
         return;
     }
-    });
 
     if (body === '1') {
       await client.sendText(message.from, 'Horários: Seg a Sex – 14h às 20h');
