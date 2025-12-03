@@ -68,17 +68,20 @@ function start(client) {
   console.log('Bot iniciado e aguardando mensagens…');
 
   client.onMessage(async (message) => {
-    if (message.isGroupMsg) return;
+    console.log("RECEBIDA:", message.body, "DE:", message.from);
 
     const body = (message.body || '').trim().toLowerCase();
-
-    if (body === 'menu' || body === 'oi' || body === 'olá' || body === 'ola') {
-      await client.sendText(
-        message.from,
-        'Olá! Escolha uma opção:\n1 – Horários\n2 – Endereço\n3 – Falar com atendente'
-      );
-      return;
+    
+    if (body === 'menu') {
+        await client.sendText(message.from, 'Menu funcionando!');
+        return;
     }
+
+    if (body === 'oi' || body === 'ola' || body === 'olá') {
+        await client.sendText(message.from, 'Oi! Teste funcionando!');
+        return;
+    }
+    });
 
     if (body === '1') {
       await client.sendText(message.from, 'Horários: Seg a Sex – 14h às 20h');
